@@ -128,3 +128,12 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# for mac
+
+.DS_Store
+.env
+npm-debug.log
+.idea/
+.vscode/
+node_modules/
