@@ -1,0 +1,45 @@
+ul {
+    list-style: none;
+    padding: 0;
+}
+h2{
+    margin: 0;
+    padding: 0;
+}
+
+#categories {
+    font-family: 'Montserrat', sans-serif;
+    color: #2e2f42;
+    letter-spacing: 0.04em;
+    width: 440px;
+
+}
+
+.item {
+    background-color: #f6f6fe;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.item:not(:last-child) {
+    margin-bottom: 24px;
+}
+
+.item-title {
+    margin-bottom: 16px;
+    font-weight: 600px;
+    font-size: 24px;
+    line-height: 1.33em;
+}
+
+.item-option>li {
+    border: 1px solid #808080;
+    border-radius: 4px;
+    padding-left: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.item-option>li:not(:last-child) {
+    margin-bottom: 8px;
+}

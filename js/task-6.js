@@ -1,13 +1,46 @@
-const controls = document.getElementById('controls');
-const box = document.getElementById('boxes');
-controls.addEventListener('click', handleClick)
+const MIN_SIZE = 1;
+const MAX_SIZE = 100;
 
-function handleClick(e) {
-    e.preventDefault();
-    
-    console.dir(e.target);
 
+const elements = {
+    itemBox: document.getElementById('boxes'),
+    userInput: document.getElementById('controls').children[0],
+    createElements: document.getElementById('controls').children[1],
+    clearElements: document.getElementById('controls').children[2]
 }
 
+elements.createElements.addEventListener('click', createBoxes);
+elements.clearElements.addEventListener('click', destroyBoxes);
 
+function createBoxes() {
+    const userSize = elements.userInput.value;
+    if (isAmount(userSize)) {
+        return elementBox(userSize)
+    }
+    return alert('кількість елементів виходить за межі від 1 до 100')
+}
 
+function destroyBoxes() {
+    elements.itemBox.innerHTML = ''
+}
+
+function elementBox(amount) {
+    const elementBox = [];
+    let multiplier = 30;
+    for (let i = 1; i <= amount; i += 1){
+        const randomColor = getRandomHexColor();
+        elementBox.push(`<div style="width:${multiplier}px; height:${multiplier}px; background-color: ${randomColor};"></div>`)
+        multiplier += 10;
+    }
+    return elements.itemBox.insertAdjacentHTML('afterbegin', elementBox.join(''));
+}
+
+function isAmount(size) {
+    return size>=MIN_SIZE && size<=MAX_SIZE ? true : false
+}
+
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
+}
