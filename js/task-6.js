@@ -32,7 +32,7 @@ function elementBox(amount) {
         elementBox.push(`<div style="width:${multiplier}px; height:${multiplier}px; background-color: ${randomColor};"></div>`)
         multiplier += 10;
     }
-    return elements.itemBox.insertAdjacentHTML('afterbegin', elementBox.join(''));
+    return elements.itemBox.insertAdjacentHTML('beforeend', elementBox.join(''));
 }
 
 function isAmount(size) {

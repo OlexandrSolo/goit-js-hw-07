@@ -30,6 +30,6 @@ const gallery = document.querySelector('.gallery');
 images.map(element=>createListItem(element))
 
 function createListItem({ url, alt }) {
-    const item = `<li><img src="${url}" alt="${alt}"></li>`;
-    return gallery.insertAdjacentHTML('beforebegin', item)
+    const item = `<li><img src="${url}" alt="${alt}" width="360" height="300"></li>`;
+    return gallery.insertAdjacentHTML('beforeend', item)
 }
