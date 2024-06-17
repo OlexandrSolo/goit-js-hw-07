@@ -28,7 +28,6 @@ function destroyBoxes() {
 function elementBox(amount) {
     const elementBox = [];
     const previousElement = isEmpty()
-    console.log(previousElement);
     let multiplier = previousElement || 30;
     for (let i = 1; i <= amount; i += 1){
         const randomColor = getRandomHexColor();
@@ -53,5 +52,3 @@ function getRandomHexColor() {
     .toString(16)
     .padStart(6, 0)}`;
 }
-
-isEmpty()
