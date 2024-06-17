@@ -1,13 +1,16 @@
-const randomColor = document.querySelector('.change-color')
-const labelColor = document.querySelector('.color');
+const elements = {
+  randomColor: document.querySelector('.change-color'),
+  labelColor: document.querySelector('.color'),
+};
 
-randomColor.addEventListener('click', handleClick)
+elements.randomColor.addEventListener('click', handleClick);
 
 function handleClick(e) {
-    e.preventDefault();
-    const color = getRandomHexColor();
-    labelColor.textContent = color;
-    document.body.style.backgroundColor = color;
+  e.preventDefault();
+  const color = getRandomHexColor();
+  elements.labelColor.textContent = color;
+  document.body.style.backgroundColor = color;
+  elements.labelColor.style.color = color;
 }
 
 function getRandomHexColor() {

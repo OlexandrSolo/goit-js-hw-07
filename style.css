@@ -54,6 +54,7 @@ button {
     border-radius: 8px;
     padding: 8px 16px;
     border: none;
+    cursor: pointer;
 }
 
 .container {
@@ -154,9 +155,8 @@ button {
     height: 40px;
     background: #4e75ff;
 }
-
-.login-form>label>input:hover,
-.login-form>label>input:active {
+label>input:active,
+label>input:hover{
     border: 1px solid #000;
 }
 
