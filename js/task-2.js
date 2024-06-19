@@ -27,9 +27,14 @@ const images = [
 
 const gallery = document.querySelector('.gallery');
 
-images.map(element=>createListItem(element))
+(()=>{
+    const items = createElement();
+    gallery.insertAdjacentHTML('beforeend', items.join(''))
+})()
 
-function createListItem({ url, alt }) {
-    const item = `<li><img src="${url}" alt="${alt}" width="360" height="300"></li>`;
-    return gallery.insertAdjacentHTML('beforeend', item)
+function createElement(){
+    const newArr= [...images];
+    const elementArr = [];
+    newArr.map(({url, alt})=>elementArr.push(`<li><img src="${url}" alt="${alt}" width="360" height="300"></li>`))
+    return elementArr
 }

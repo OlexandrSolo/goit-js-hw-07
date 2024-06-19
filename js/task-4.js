@@ -8,17 +8,18 @@ function handleSubmit(e) {
     [e.target.elements.email.name]: e.target.elements.email.value,
     [e.target.elements.password.name]: e.target.elements.password.value,
   };
-  form.reset();
-  if (isEmpty(userData)) {
+  
+  if (!isEmpty(userData)) {
+    form.reset();
     console.log('TASK-4 ====>', userData);
     return userData;
   }
 }
 
 function isEmpty({ email, password }) {
-  if (email.trim() !== '' && password.trim() !== '') {
-    return true;
+  if ((email.trim() !== '' && password.trim() !== '')) {
+    return false;
   }
   alert('All form fields must be filled in');
-  return false;
+  return true;
 }

@@ -3,7 +3,7 @@ inputLabel: document.getElementById('name-input'),
 userName: document.getElementById('name-output')
 }
 
-elements.inputLabel.addEventListener('change', getUserInput);
+elements.inputLabel.addEventListener('input', getUserInput);
 const defaultName = elements.userName.textContent;
 
 function getUserInput(e) {

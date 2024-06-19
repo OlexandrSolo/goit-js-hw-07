@@ -2,7 +2,7 @@ const MIN_SIZE = 1;
 const MAX_SIZE = 100;
 
 const elements = {
-    itemBox: document.getElementById('boxes'),
+    itemsBox: document.getElementById('boxes'),
     userInput: document.getElementById('controls').children[0],
     createElements: document.getElementById('controls').children[1],
     clearElements: document.getElementById('controls').children[2]
@@ -11,44 +11,42 @@ const elements = {
 elements.createElements.addEventListener('click', createBoxes);
 elements.clearElements.addEventListener('click', destroyBoxes);
 
+function destroyBoxes() {
+    elements.itemsBox.innerHTML = '';
+    elements.userInput.value = 0;
+}
+
 function createBoxes() {
     const userSize = elements.userInput.value;
-    if (isAmount(userSize)) {
-        elements.userInput.value = '';
-        return elementBox(userSize)
+    const newArr = [];
+    let width = 30;
+    let height = 30;
+    if(!isAmount(userSize)){
+       return alert('кількість елементів виходить за межі від 1 до 100')
     }
-    elements.userInput.value = '';
-    return alert('кількість елементів виходить за межі від 1 до 100')
-}
-
-function destroyBoxes() {
-    elements.itemBox.innerHTML = ''
-}
-
-function elementBox(amount) {
-    const elementBox = [];
-    const previousElement = isEmpty()
-    let multiplier = previousElement || 30;
-    for (let i = 1; i <= amount; i += 1){
-        const randomColor = getRandomHexColor();
-        elementBox.push(`<div style="width:${multiplier}px; height:${multiplier}px; background-color: ${randomColor};"></div>`)
-        multiplier += 10;
+    
+    for(let i = 1; i<= userSize; i++){
+        newArr.push(`<div style="width:${width}px; height:${height}px; background-color: ${getRandomHexColor()};"></div>`)
+        width+=10;
+        height+=10;
     }
-    return elements.itemBox.insertAdjacentHTML('beforeend', elementBox.join(''));
+    elements.itemsBox.insertAdjacentHTML('beforeend', newArr.join(''))
 }
 
-function isAmount(size) {
-    return size>=MIN_SIZE && size<=MAX_SIZE ? true : false
-}
 
-function isEmpty(){
-    if(elements.itemBox.children.length){
-        return (elements.itemBox.children.length * 10) + 30
+function isEmpty(list){
+    if(list.length){
+        return false
     }
+    return true
+}
+
+function isAmount(size){
+    return (size>=MIN_SIZE) && (size<=MAX_SIZE) ? true : false;
 }
 
 function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, 0)}`;
-}
+    return `#${Math.floor(Math.random() * 16777215)
+      .toString(16)
+      .padStart(6, 0)}`;
+  }
